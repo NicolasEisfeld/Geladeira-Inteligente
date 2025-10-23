@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service
 
 @RestController
 @RequestMapping("/food")
@@ -27,6 +28,9 @@ public class FoodItemController {
     }
 
     // Update
+    public ResponseEntity<FoodItemModel> atualizar(@RequestBody FoodItemModel foodItemModel) {
+        FoodItemModel atualizado = service.
+    }
 
     // Delete
 }
