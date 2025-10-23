@@ -21,7 +21,10 @@ public class FoodItemController {
     // Get
 
     // Post
-    public ResponseEntity<FoodItemModel> criar(@RequestBody FoodItemModel foodItemModel)
+    public ResponseEntity<FoodItemModel> criar(@RequestBody FoodItemModel foodItemModel) {
+        FoodItemModel salvo = service.salvar(foodItemModel);
+        return ResponseEntity.ok(salvo);
+    }
 
     // Update
 
