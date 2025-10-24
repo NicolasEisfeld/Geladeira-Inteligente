@@ -23,12 +23,8 @@ public class FoodItemService {
         return repository.findAll();
     }
 
-    public Optional<FoodItemModel> alterar(Long id, FoodItemModel updated) {
-        return repository.findById(id).map(existing -> {
-            // Preserva o ID existente
-            updated.setId(existing.getId());
-            return repository.save(updated);
-        });
+    public FoodItemModel alterar(FoodItemModel foodItemModel) {
+            return repository.save(foodItemModel);
     }
 
     public boolean deletar(Long id) {
