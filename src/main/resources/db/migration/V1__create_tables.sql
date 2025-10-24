@@ -1,8 +1,7 @@
-
-CREATE TABLE IF NOT EXISTS food_item (
+CREATE TABLE IF NOT EXISTS food_items (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
+  category VARCHAR(255),
   quantity INT NOT NULL DEFAULT 1,
-  expiration_date TIMESTAMP,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  expiration_date VARCHAR(255)
 );

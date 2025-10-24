@@ -42,6 +42,14 @@ public class FoodItemController {
         return ResponseEntity.ok(lista);
     }
 
+    // Get by id
+    @GetMapping("/{id}")
+    public ResponseEntity<FoodItemModel> buscarPorId(@PathVariable Long id) {
+        return service.buscarPorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     // Delete
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Long id) {

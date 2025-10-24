@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MagicFridgeAiApplication {
 
 	public static void main(String[] args) {
+		// Prevent Netty from attempting to use sun.misc.Unsafe (suppresses the runtime warning)
+		System.setProperty("io.netty.noUnsafe", "true");
 		SpringApplication.run(MagicFridgeAiApplication.class, args);
 	}
 

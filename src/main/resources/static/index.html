@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Magic Fridge - Food Items</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Magic Fridge — Food Items</h1>
+
+  <form id="item-form">
+    <input type="hidden" id="item-id" />
+    <input id="name" placeholder="Nome" required />
+    <input id="category" placeholder="Categoria" />
+    <input id="quantity" type="number" min="0" value="1" style="width:80px" />
+    <input id="expirationDate" placeholder="Data de validade (ex: 2025-10-31)" />
+    <button type="submit">Salvar</button>
+    <button type="button" id="cancel-btn" style="display:none">Cancelar</button>
+  </form>
+
+  <table id="items-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Quantidade</th>
+        <th>Validade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="/main.js"></script>
+</body>
+</html>
