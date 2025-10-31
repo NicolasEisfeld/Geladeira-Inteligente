@@ -8,32 +8,42 @@
 </head>
 
 <body>
-  <h1>Magic Fridge — Food Items</h1>
+  <h1>Magic Fridge - Gerenciador de Alimentos</h1>
+  <h2>Nicolas Eisfeld</h2>
+  <div class="grid">
 
-  <form id="item-form">
-    <input type="hidden" id="item-id" />
-    <input id="name" placeholder="Nome" required />
-    <input id="category" placeholder="Categoria" />
-    <input id="quantity" type="number" min="0" value="1" style="width:80px" />
-    <input id="expirationDate" placeholder="Data de validade (ex: 2025-10-31)" />
-    <button type="submit">Salvar</button>
-    <button type="button" id="cancel-btn" style="display:none">Cancelar</button>
-  </form>
+    <div class="FoodsGUI">
+        <h3>Cadastro de Alimentos</h3>
+      <form id="item-form">
+        <input type="hidden" id="item-id" />
+        <input id="name" placeholder="Nome" required />
+        <input id="category" placeholder="Categoria" />
+        <input id="quantity" type="number" min="0" value="1" style="width:80px" />
+        <input id="expirationDate" type="date" placeholder="Data de validade" />
+        <button type="submit">Salvar</button>
+        <button type="button" id="cancel-btn" style="display:none">Cancelar</button>
+      </form>
 
-  <table id="items-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Categoria</th>
-        <th>Quantidade</th>
-        <th>Validade</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+      <table id="items-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Quantidade</th>
+            <th>Validade</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    
+    <div class="FoodsIA"> 
+      <h3>Gerador de Receitas</h3>
 
+    </div>
+  </div>
   <script src="/main.js"></script>
 </body>
 </html>

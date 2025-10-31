@@ -1,13 +1,97 @@
-body { font-family: Arial, Helvetica, sans-serif; max-width: 900px; margin: 24px auto; padding: 0 12px; color:#333 }
-form { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px }
-form input, form select { padding:8px; font-size:14px; border:1px solid #ccc; border-radius:4px }
-button { padding:6px 10px; cursor:pointer; border-radius:4px; border:1px solid #007bff; background:#007bff; color:#fff }
-button[type="button"] { background:#6c757d; border-color:#6c757d }
-table { width:100%; border-collapse:collapse; margin-top:16px }
-th, td { border:1px solid #ddd; padding:8px; text-align:left }
-th { background:#f5f5f5 }
-.actions button { margin-right:6px }
-#name { min-width:180px }
-#category { min-width:120px }
-#expirationDate { min-width:160px }
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap');
 
+ :root {
+   --main-color: #328ecc;
+   --sec-color: #2c6283;
+   --bg: #cfedff;
+   --tri-color: #f0f7ff;
+ }
+
+body {
+  font-family: "Momo Trust Sans", sans-serif;
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 12px;
+  background-color: var(--bg);
+  color: var(--main-color);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.FoodsGUI {
+    grid-area: 1 / 1 / 4 / 4;
+    background-color: var(--tri-color);
+    color: var(--sec-color);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.FoodsIA {
+    grid-area: 1 / 4 / 4 / 6;
+    background-color: var(--tri-color);
+    color: var(--sec-color);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  color: var(--sec-color);
+}
+form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+}
+form input,
+form select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button {
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #007bff;
+  background: #007bff;
+  color: #fff;
+}
+button[type="button"] {
+  background: #6c757d;
+  border-color: #6c757d;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background: #f5f5f5;
+}
+.actions button {
+  margin-right: 6px;
+}
+#name {
+  min-width: 180px;
+}
+#category {
+  min-width: 120px;
+}
+#expirationDate {
+  min-width: 160px;
+}
