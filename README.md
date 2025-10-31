@@ -7,11 +7,11 @@
 </p>
 
 ## Tecnologias Implementadas
-[![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#)
-[![CSS](https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff)](#)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#)
-[![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white)](#)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff)](#)
-[![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#)
+![HTML](https://img.shields.io/badge/-HTML-262626?style=flat&logo=HTML5)&nbsp;
+![CSS](https://img.shields.io/badge/CSS-262626?logo=css&logoColor=43a8d4)&nbsp;
+![JavaScript](https://img.shields.io/badge/-JavaScript-262626?style=flat&logo=javascript)&nbsp;
+![Java](https://img.shields.io/badge/Java-262626.svg??style=for-the-badge&logo=openjdk&logoColor=white)&nbsp;
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-262626?style=flat&logo=Spring)&nbsp;
+![ChatGPT](https://img.shields.io/badge/ChatGPT-262626?logo=openai&logoColor=white)&nbsp;
 
 
