@@ -24,8 +24,6 @@ public class ChatService {
     private final WebClient webClient = WebClient.create();
 
     public String enviarMensagem(String mensagem) {
-        // se a apiKey nao estiver configurada via variavel de ambiente/propriedade,
-        // tentamos carregar de um arquivo .env na raiz do projeto (facilita testes locais)
         if (apiKey == null || apiKey.isBlank()) {
             loadEnvFile();
         }
@@ -69,7 +67,7 @@ public class ChatService {
         }
     }
 
-    // Tenta ler arquivo .env na raiz do projeto e carregar OPENAI_API_KEY se presente
+    // Tenta ler arquivo .env na raiz do projeto e carregar o OPENAI_API_KEY
     private void loadEnvFile() {
         try {
             Path envPath = Path.of(".env");
