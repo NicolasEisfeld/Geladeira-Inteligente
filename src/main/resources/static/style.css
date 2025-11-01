@@ -146,6 +146,16 @@ table {
   padding: 6px 0;
 }
 
+.recipe {
+  background: #fff;
+  border: 1px solid #e6f0f8;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+  color: #123b4f;
+  white-space: pre-wrap;
+}
+
 @media (max-width: 640px){
   .grid{ grid-template-columns: 1fr; grid-template-rows: auto; }
   .FoodsGUI{ grid-area: auto; }

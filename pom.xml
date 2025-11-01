@@ -30,6 +30,7 @@
 		<java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <bytebuddy.version>1.17.7</bytebuddy.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -65,6 +66,10 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -99,6 +104,24 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+
+			<!-- Adiciona configuração do surefire para anexar o agente byte-buddy durante testes -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.1.2</version>
+				<dependencies>
+					<dependency>
+						<groupId>net.bytebuddy</groupId>
+						<artifactId>byte-buddy-agent</artifactId>
+						<version>${bytebuddy.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<argLine>-javaagent:"${settings.localRepository}/net/bytebuddy/byte-buddy-agent/${bytebuddy.version}/byte-buddy-agent-${bytebuddy.version}.jar" ${argLine}</argLine>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -110,7 +133,7 @@
 						</exclude>
 					</excludes>
 
-					<jvmArguments>-Dio.netty.noUnsafe=true</jvmArguments>
+					<jvmArguments>-javaagent:"${settings.localRepository}/net/bytebuddy/byte-buddy-agent/${bytebuddy.version}/byte-buddy-agent-${bytebuddy.version}.jar" -Dio.netty.noUnsafe=true</jvmArguments>
 				</configuration>
 			</plugin>
 		</plugins>

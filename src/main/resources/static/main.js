@@ -106,6 +106,27 @@ async function deleteItem(id){
   }
 }
 
+async function gerarReceita(){
+  const btn = document.getElementById('generate-recipe');
+  const out = document.getElementById('recipe-result');
+  try{
+    btn.disabled = true;
+    btn.textContent = 'Gerando...';
+    out.textContent = '';
+    const res = await fetch('/food/recipe');
+    if (!res.ok) throw new Error('Falha ao gerar receita: ' + res.status);
+    const text = await res.text();
+    // exibir mantendo quebras de linha
+    out.innerHTML = '<pre>' + escapeHtml(text) + '</pre>';
+  }catch(err){
+    console.error(err);
+    out.textContent = 'Erro: ' + err.message;
+  }finally{
+    btn.disabled = false;
+    btn.textContent = 'Gerar Receita';
+  }
+}
+
 // eventos
 document.addEventListener('DOMContentLoaded', ()=>{
   listItems();
@@ -124,4 +145,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
       deleteItem(id);
     }
   });
+
+  document.getElementById('generate-recipe').addEventListener('click', gerarReceita);
 });
