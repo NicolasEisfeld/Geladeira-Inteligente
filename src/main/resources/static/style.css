@@ -69,23 +69,11 @@ button[type="button"] {
   background: #6c757d;
   border-color: #6c757d;
 }
+
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 16px;
+  display: none;
 }
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-th {
-  background: #f5f5f5;
-}
-.actions button {
-  margin-right: 6px;
-}
+
 #name {
   min-width: 180px;
 }
@@ -94,4 +82,72 @@ th {
 }
 #expirationDate {
   min-width: 160px;
+}
+
+/* cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.card {
+  background: #fff;
+  border: 1px solid #e1eef9;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(50,142,204,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-body {
+  margin-bottom: 8px;
+}
+.card-title {
+  margin: 0 0 6px 0;
+  color: var(--sec-color);
+}
+
+.card-category {
+    display: inline-block;
+    font-size: 14px;
+    padding: 4px 10px;
+    background-color: #d0e5ef;
+    color: #5a8ea8;
+    margin: 4px 0;
+    border-radius: 12px;
+}
+.card-quant {
+  font-size: 13px;
+  color: #3b5f73;
+  margin: 4px 0;
+}
+
+.card-valid {
+  font-size: 12px;
+  color: #b6b8c7;
+  margin: 4px 0;
+}
+
+
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.card-actions button {
+  padding: 6px 8px;
+  font-size: 13px;
+}
+.empty {
+  color: #666;
+  padding: 6px 0;
+}
+
+@media (max-width: 640px){
+  .grid{ grid-template-columns: 1fr; grid-template-rows: auto; }
+  .FoodsGUI{ grid-area: auto; }
+  .FoodsIA{ grid-area: auto; }
 }

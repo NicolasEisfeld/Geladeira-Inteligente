@@ -1,7 +1,7 @@
 const apiBase = '/food';
 
 async function fetchJson(url, options = {}){
-  const res = await fetch(url, Object.assign({headers: {'Content-Type': 'application/json'}}, options));
+  const res = await fetch(url, {...{headers: {'Content-Type': 'application/json'}}, ...options});
   if (!res.ok) throw new Error(`Request failed: ${res.status}`);
   if (res.status === 204) return null;
   return res.json();
@@ -10,23 +10,31 @@ async function fetchJson(url, options = {}){
 async function listItems(){
   try{
     const items = await fetchJson(apiBase);
-    const tbody = document.querySelector('#items-table tbody');
-    tbody.innerHTML = '';
-    items.forEach(it => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${it.id ?? ''}</td>
-        <td>${escapeHtml(it.name ?? '')}</td>
-        <td>${escapeHtml(it.category ?? '')}</td>
-        <td>${it.quantity ?? ''}</td>
-        <td>${it.expirationDate ?? ''}</td>
-        <td class="actions">
+    const container = document.getElementById('items-list');
+    container.innerHTML = '';
+    if (!items || items.length === 0){
+      container.innerHTML = '<p class="empty">Nenhum item cadastrado.</p>';
+      return;
+    }
+
+    for (const it of items){
+      const card = document.createElement('div');
+      card.className = 'card';
+      const exp = it.expirationDate ? new Date(it.expirationDate).toLocaleDateString() : '';
+      card.innerHTML = `
+        <div class="card-body">
+          <h4 class="card-title">${escapeHtml(it.name ?? '')}</h4>
+          <div class="card-category">Categoria: <strong>${escapeHtml(it.category ?? '')}</strong></div>
+          <div class="card-quant">Quantidade: <strong>${it.quantity ?? 0}</strong></div>
+          <div class="card-valid">Validade: <strong>${exp}</strong></div>
+        </div>
+        <div class="card-actions">
           <button data-id="${it.id}" class="edit">Editar</button>
           <button data-id="${it.id}" class="delete">Excluir</button>
-        </td>
+        </div>
       `;
-      tbody.appendChild(tr);
-    });
+      container.appendChild(card);
+    }
   }catch(err){
     console.error(err);
     alert('Erro ao carregar items: ' + err.message);
@@ -34,7 +42,8 @@ async function listItems(){
 }
 
 function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+  const map = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};
+  return String(s).replaceAll(/[&<>"']/g, c => map[c]);
 }
 
 function formToObject(){
@@ -97,13 +106,15 @@ async function deleteItem(id){
   }
 }
 
+// eventos
 document.addEventListener('DOMContentLoaded', ()=>{
   listItems();
   const form = document.getElementById('item-form');
   form.addEventListener('submit', submitForm);
   document.getElementById('cancel-btn').addEventListener('click', clearForm);
 
-  document.querySelector('#items-table tbody').addEventListener('click', (e)=>{
+  const container = document.getElementById('items-list');
+  container.addEventListener('click', (e)=>{
     if (e.target.matches('button.edit')){
       const id = e.target.dataset.id;
       fetchJson(`${apiBase}/${id}`).then(populateForm).catch(err=>alert('Erro: '+err.message));
@@ -114,4 +125,3 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   });
 });
-
