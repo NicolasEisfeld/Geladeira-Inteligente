@@ -80,7 +80,6 @@ async function submitForm(e){
   const obj = formToObject();
   try{
     if (obj.id){
-      // update
       await fetchJson(`${apiBase}/${obj.id}`, {method: 'PUT', body: JSON.stringify(obj)});
       alert('Atualizado com sucesso');
     } else {

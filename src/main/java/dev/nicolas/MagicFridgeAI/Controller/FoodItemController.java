@@ -15,7 +15,8 @@ public class FoodItemController {
     private final ChatService chatService;
 
     // Injetado via construtor
-    public FoodItemController(FoodItemService foodItemService, ChatService chatService) {
+    public
+    FoodItemController(FoodItemService foodItemService, ChatService chatService) {
         this.service = foodItemService;
         this.chatService = chatService;
     }
